@@ -1,0 +1,28 @@
+- name: Get Secrets
+  uses: arn:aws:secretsmanager:us-east-2:261975962852:secret:S3things-0LMxk7
+  with:
+    secret-ids:
+      S3BIN, secretId1
+      S3PRI, secretId2
+      S3PUB, SecretId3
+
+name: Upload Website
+
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: jakejarvis/s3-sync-action@master
+      
+    with:
+      args: --acl public-read --follow-symlinks --delete
+    env:
+      AWS_S3_BUCKET: ${{ secrets.S3BIN }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.S3PUB }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.S3PRI }}
