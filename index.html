@@ -56,6 +56,30 @@
 </head>
 <body class="yui-t7">
 
+	
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.910.0.min.js"></script>
+	
+	<script>
+function getApiKey() {
+  // create a new SecretsManager instance
+  const secretsManager = new AWS.SecretsManager({ region: 'us-east-1' });
+
+  // call getSecretValue to retrieve your secret
+  return secretsManager.getSecretValue({ SecretId: 'Open_AI_API_key' }).promise()
+    .then((data) => {
+      // parse the secret value and return the API key
+      return JSON.parse(data.SecretString).api_key;
+    });
+}
+
+// call the getApiKey function and use the returned API key
+getApiKey().then((apiKey) => {
+  // use the API key here
+  console.log(apiKey);
+});
+			</script>
+
+	
 <div id="doc2" class="yui-t7CF">
 	
 	<div id="inner">
@@ -230,7 +254,7 @@
 			const request = new XMLHttpRequest();
 			request.open('POST', apiUrl);
 			request.setRequestHeader('Content-Type', 'application/json');
-			request.setRequestHeader('Authorization', 'Bearer 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');
+			request.setRequestHeader('Authorization', 'Bearer ${apiKey}');
 			request.onload = () => {
 				const response = JSON.parse(request.responseText);
 				const answer = response.choices[0].text.trim();
