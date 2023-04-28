@@ -35,15 +35,13 @@ getApiKey().then((apiKey) => {
   // use the API key here
   console.log(apiKey);
 });
-			</script>
-
-	
-		
+			</script>	
 	<div id="chatbox">
 		<div id="chatlog"></div>
 		<input type="text" id="chatinput" placeholder="Ask ChatGPT a question...">
 		<button id="chatbutton">Send</button>
 	</div>
+	
 	<script>
 		// define the ChatGPT API endpoint
 		const apiUrl = 'https://api.openai.com/v1/engines/davinci-codex/completions';
@@ -67,7 +65,7 @@ getApiKey().then((apiKey) => {
 			request.onload = () => {
 				const response = JSON.parse(request.responseText);
 				const answer = response.choices[0].text.trim();
-				chatLog.innerHTML += `<p>ChatGPT: ${answer}</p>`;
+				chatLog.innerHTML += '<p>ChatGPT: ${answer}</p>';
 				chatLog.scrollTop = chatLog.scrollHeight;
 			};
 			const requestBody = {
@@ -112,7 +110,7 @@ getApiKey().then((apiKey) => {
 
 					  
 				    <h3><a href="mailto:chandler12@gmail.com">chandler12@gmail.com</a></h3>
-					<h3>(602) 920-9752</h3> BOX
+					<h3>(602) 920-9752</h3>
 					</div><!--// .contact-info -->
 				</div><!--// .yui-u -->
 			</div><!--// .yui-gc -->
