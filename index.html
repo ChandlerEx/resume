@@ -7,6 +7,10 @@
 	<meta name="description" content="" />
 	<link href="resume.css" rel="stylesheet" type="text/css" />
 	
+	<style type="text/css">
+	
+	</style>
+	
 </head>
 <body class="yui-t7">
 
@@ -33,6 +37,53 @@ getApiKey().then((apiKey) => {
 });
 			</script>
 
+	
+		
+	<div id="chatbox">
+		<div id="chatlog"></div>
+		<input type="text" id="chatinput" placeholder="Ask ChatGPT a question...">
+		<button id="chatbutton">Send</button>
+	</div>
+	<script>
+		// define the ChatGPT API endpoint
+		const apiUrl = 'https://api.openai.com/v1/engines/davinci-codex/completions';
+
+		// handle the chat button click event
+		document.getElementById('chatbutton').addEventListener('click', () => {
+			const chatInput = document.getElementById('chatinput');
+			const chatLog = document.getElementById('chatlog');
+			const question = chatInput.value.trim();
+
+			if (question === '') return;
+
+			// append the user's question to the chat log
+			chatLog.innerHTML += `<p>You: ${question}</p>`;
+
+			// send the question to ChatGPT and append the response to the chat log
+			const request = new XMLHttpRequest();
+			request.open('POST', apiUrl);
+			request.setRequestHeader('Content-Type', 'application/json');
+			request.setRequestHeader('Authorization', 'Bearer ${apiKey}');
+			request.onload = () => {
+				const response = JSON.parse(request.responseText);
+				const answer = response.choices[0].text.trim();
+				chatLog.innerHTML += `<p>ChatGPT: ${answer}</p>`;
+				chatLog.scrollTop = chatLog.scrollHeight;
+			};
+			const requestBody = {
+				prompt: question,
+				max_tokens: 150,
+				temperature: 0.7,
+				n: 1,
+				stop: '\n'
+			};
+			request.send(JSON.stringify(requestBody));
+
+			// clear the input field
+			chatInput.value = '';
+		});
+	</script>
+	
 	
 <div id="doc2" class="yui-t7CF">
 	
@@ -183,51 +234,6 @@ getApiKey().then((apiKey) => {
 							<h3>BA Psychology </h3>
 						</div>
 
-		
-	<div id="chatbox">
-		<div id="chatlog"></div>
-		<input type="text" id="chatinput" placeholder="Ask ChatGPT a question...">
-		<button id="chatbutton">Send</button>
-	</div>
-	<script>
-		// define the ChatGPT API endpoint
-		const apiUrl = 'https://api.openai.com/v1/engines/davinci-codex/completions';
-
-		// handle the chat button click event
-		document.getElementById('chatbutton').addEventListener('click', () => {
-			const chatInput = document.getElementById('chatinput');
-			const chatLog = document.getElementById('chatlog');
-			const question = chatInput.value.trim();
-
-			if (question === '') return;
-
-			// append the user's question to the chat log
-			chatLog.innerHTML += `<p>You: ${question}</p>`;
-
-			// send the question to ChatGPT and append the response to the chat log
-			const request = new XMLHttpRequest();
-			request.open('POST', apiUrl);
-			request.setRequestHeader('Content-Type', 'application/json');
-			request.setRequestHeader('Authorization', 'Bearer ${apiKey}');
-			request.onload = () => {
-				const response = JSON.parse(request.responseText);
-				const answer = response.choices[0].text.trim();
-				chatLog.innerHTML += `<p>ChatGPT: ${answer}</p>`;
-				chatLog.scrollTop = chatLog.scrollHeight;
-			};
-			const requestBody = {
-				prompt: question,
-				max_tokens: 150,
-				temperature: 0.7,
-				n: 1,
-				stop: '\n'
-			};
-			request.send(JSON.stringify(requestBody));
-
-			// clear the input field
-			chatInput.value = '';
-		});
-	</script>
 								</div><!--// .yui-gf -->
 				</div><!--// .yui-b -->
 				</div><!--// yui-main -->
