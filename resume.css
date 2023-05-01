@@ -189,6 +189,8 @@ a#pdf:hover {background: #222;font-size: 122%;}
 .skills-list li span { font-size: 152%; display: block; margin-bottom: -2px; padding: 0 }
 .talent { width: 80%; float: left }
 .talent2 { width: 33%; float: left }
+.talent3 {width: 45%; float: left }
+.seperator {width: 5%; float: left} 
 .talent h2 { margin-bottom: 2px; }
 
 #srt-ttab { margin-bottom: 100px; text-align: center;  }
