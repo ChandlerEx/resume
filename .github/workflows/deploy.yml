@@ -29,5 +29,5 @@ jobs:
       if: success()
       run: |
         aws sns publish \
-      --topic-arn ${{ secrets.SNS_TOPIC_ARN }} \
-      --message "Website update successful. Deployed commit: ${{ github.sha }}"
+          --topic-arn ${{ secrets.SNS_TOPIC_ARN }} \
+          --message "Website update successful. Deployed commit: ${{ github.sha }}"
