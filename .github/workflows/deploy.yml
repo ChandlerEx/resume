@@ -28,6 +28,6 @@ jobs:
     - name: Notify SNS
       if: success()
       run: |
-    aws sns publish \
+        aws sns publish \
       --topic-arn ${{ secrets.SNS_TOPIC_ARN }} \
       --message "Website update successful. Deployed commit: ${{ github.sha }}"
