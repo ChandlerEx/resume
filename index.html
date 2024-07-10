@@ -32,18 +32,17 @@
 				      <p>&nbsp;</p>
 				      <script>
 						fetch('https://uof6x33n60.execute-api.us-west-1.amazonaws.com/WestStage', {
-						  method: 'GET',
-						  headers: {
-							'Content-Type': 'application/json',
-						  },
+						  method: 'GET'
 						})
-						.then(response => response.json())
+						.then(response => response.text())
 						.then(data => {
-						  console.log('Response:', data);
-						  if (data.hits !== undefined) {
-							document.getElementById('hit-counter').textContent = `Total Hits: ${data.hits}`;
+						  console.log('Hit count:', data);
+						  const hitCount = parseInt(data, 10);
+						  if (!isNaN(hitCount)) {
+							document.getElementById('hit-counter').textContent = `Total Hits: ${hitCount}`;
 						  } else {
-							console.error('Unexpected response format:', data);
+							console.error('Unexpected response:', data);
+							document.getElementById('hit-counter').textContent = 'Error: Unexpected response';
 						  }
 						})
 						.catch(error => {
