@@ -31,11 +31,21 @@
 				      <h3><strong>Page Views: </strong><span id="result"></span></h3>
 				      <p>&nbsp;</p>
 				      <script>
-fetch('https://vz8usfpc32.execute-api.us-east-1.amazonaws.com/WebHitCounterStage', {method: 'GET'})
-  .then(response => response.json())
-  .then(data => console.log('Total hits:', data.hits))
-  .catch(error => console.error('Error:', error));
-    </script>
+						fetch('https://vz8usfpc32.execute-api.us-east-1.amazonaws.com/WebHitCounterStage', {
+						  method: 'GET',
+						  headers: {
+							'Origin': 'https://techchandler.com',
+						  },
+						})
+						.then(response => {
+						  if (!response.ok) {
+							throw new Error(`HTTP error! status: ${response.status}`);
+						  }
+						  return response.json();
+						})
+						.then(data => console.log('Total hits:', data.hits))
+						.catch(error => console.error('Error:', error));
+					</script>
 
 				    <h3><a href="mailto:chandler12@gmail.com">chandler12@gmail.com</a></h3>
 					<h3>(602) 920-9752</h3>
