@@ -34,19 +34,23 @@
 						fetch('https://uof6x33n60.execute-api.us-west-1.amazonaws.com/WestStage', {
 						  method: 'GET',
 						  headers: {
-							'Origin': 'https://techchandler.com',
+							'Content-Type': 'application/json',
 						  },
 						})
-						.then(response => {
-						  if (!response.ok) {
-							throw new Error(`HTTP error! status: ${response.status}`);
+						.then(response => response.json())
+						.then(data => {
+						  console.log('Response:', data);
+						  if (data.hits !== undefined) {
+							document.getElementById('hit-counter').textContent = `Total Hits: ${data.hits}`;
+						  } else {
+							console.error('Unexpected response format:', data);
 						  }
-						  return response.json();
 						})
-						.then(data => console.log('Total hits:', data.hits))
-						.catch(error => console.error('Error:', error));
-					</script>
-
+						.catch(error => {
+						  console.error('Error:', error);
+						  document.getElementById('hit-counter').textContent = 'Error loading hit count';
+						});
+						</script>
 				    <h3><a href="mailto:chandler12@gmail.com">chandler12@gmail.com</a></h3>
 					<h3>(602) 920-9752</h3>
 					</div><!--// .contact-info -->
