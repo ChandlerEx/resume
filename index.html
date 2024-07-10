@@ -31,7 +31,7 @@
 				      <h3><strong>Page Views: </strong><span id="result"></span></h3>
 				      <p>&nbsp;</p>
 				      <script>
-fetch(https://vz8usfpc32.execute-api.us-east-1.amazonaws.com/WebHitCounterStage', {method: 'GET'})
+fetch('https://vz8usfpc32.execute-api.us-east-1.amazonaws.com/WebHitCounterStage', {method: 'GET'})
   .then(response => response.json())
   .then(data => console.log('Total hits:', data.hits))
   .catch(error => console.error('Error:', error));
