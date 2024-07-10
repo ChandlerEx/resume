@@ -1,8 +1,38 @@
 /*
 ---------------------------------------------------------------------------------
-Many, many thanks to Matt Brown at thingsthatarebrown.com for developing the template off of which this was built. Special thanks to ChatGPT, which helped me write the code to generate the ChatGPT box on screen
+Many, many thanks to Matt Brown at thingsthatarebrown.com and Claude.ai and ChatGPT for developing the template off of which this was built.
 ---------------------------------------------------------------------------------
 */
+
+.certifications {
+    margin-bottom: 20px;
+}
+
+.certifications h2 {
+    margin-bottom: 10px;
+}
+
+.certifications ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.certifications li {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cert-name {
+    font-weight: bold;
+}
+
+.cert-date {
+    color: #666;
+    font-style: italic;
+}
+
 
 	#chatbox {
 			position: fixed;
