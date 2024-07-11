@@ -110,12 +110,12 @@ header {
 /* Section */
 
 .section-profile-h1 {
-    text-shadow: 4px 4px 0 #6fd1bd;
+    text-shadow: 4px 4px 0 #2e4ac6;
     transition: text-shadow .2s ease-in-out
 }
 
 .section-profile-h1:hover {
-    text-shadow: -4px -4px 0 salmon
+    text-shadow: -4px -4px 0 red
 }
 
 /* Style for views count */
@@ -124,7 +124,7 @@ header {
 }
 
 .viewers-count-tag {
-    color: #11ABB0;
+    color: #2e4ac6;
     font-weight: 600;
 }
 
