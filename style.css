@@ -2,8 +2,8 @@
 
 :root {
     --white-text-color: white;
-    --highlight-color: #2e4ac6;
-    --hover-color: #cc1616;
+    --highlight-color: #8595da;
+    --hover-color: #c16767;
 }
 
 * {
@@ -110,12 +110,12 @@ header {
 /* Section */
 
 .section-profile-h1 {
-    text-shadow: 4px 4px 0 #2e4ac6;
+    text-shadow: 4px 4px 0 #8595da;
     transition: text-shadow .2s ease-in-out
 }
 
 .section-profile-h1:hover {
-    text-shadow: -4px -4px 0 red
+    text-shadow: -4px -4px 0 #C16767
 }
 
 /* Style for views count */
