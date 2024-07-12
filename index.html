@@ -45,9 +45,10 @@
 	<!-- Page Hit Counter function -->
 	<script>
 		document.addEventListener('DOMContentLoaded', function() {
-		  fetch('https://uof6x33n60.execute-api.us-west-1.amazonaws.com/WestStage', {
-			method: 'GET'
-		  })
+			const API_URL = 'API_URL_PLACEHOLDER';
+			fetch(API_URL, {
+  				method: 'GET'
+			})
 		  .then(response => response.text())
 		  .then(data => {
 			console.log('Hit count:', data);
