@@ -45,9 +45,15 @@
 	<!-- Page Hit Counter function -->
 	<script>
 		document.addEventListener('DOMContentLoaded', function() {
-			fetch('https://xvqh0oyvo4.execute-api.us-west-1.amazonaws.com/Prod/', {
-				method: 'GET'
-				})
+			fetch('https://cf-resume-site-share.s3.amazonaws.com/api_url.txt')
+        .then(response => response.text())
+        .then(apiUrl => {
+            apiUrl = apiUrl.trim(); 
+            console.log('API URL:', apiUrl);
+            return fetch(apiUrl, {
+                method: 'GET'
+            });
+        })
 		  .then(response => response.json())
 		  .then(data => {
 			console.log('API response:', data);
