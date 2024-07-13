@@ -48,17 +48,17 @@
 			fetch('https://s4e0q60gai.execute-api.us-west-1.amazonaws.com/Prod/', {
 				method: 'GET'
 				})
-		  .then(response => response.text())
+		  .then(response => response.json())
 		  .then(data => {
-			console.log('Hit count:', data);
-			const hitCount = parseInt(data, 10);
+			console.log('API response:', data);
+			const hitCount = data.count;
 			const hitCounterElement = document.getElementById('hit-counter');
 			if (hitCounterElement) {
 			  if (!isNaN(hitCount)) {
 				hitCounterElement.textContent = `${hitCount}`;
 			  } else {
 				console.error('Unexpected response:', data);
-				hitCounterElement.textContent = 'Error: Unexpected response';
+				hitCounterElement.textContent = 'Error: Invalid hit count';
 			  }
 			} else {
 			  console.error('Hit counter element not found');
@@ -68,7 +68,7 @@
 			console.error('Error:', error);
 			const hitCounterElement = document.getElementById('hit-counter');
 			if (hitCounterElement) {
-			  hitCounterElement.textContent = 'Error loading hit count';
+			  hitCounterElement.textContent = 'Error ${error.message}';
 			}
 		  });
 		});
