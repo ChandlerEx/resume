@@ -45,10 +45,9 @@
 	<!-- Page Hit Counter function -->
 	<script>
 		document.addEventListener('DOMContentLoaded', function() {
-			const API_URL = 'API_URL_PLACEHOLDER';
-			fetch(API_URL, {
-  				method: 'GET'
-			})
+			fetch('https://s4e0q60gai.execute-api.us-west-1.amazonaws.com/Prod/', {
+				method: 'GET'
+				})
 		  .then(response => response.text())
 		  .then(data => {
 			console.log('Hit count:', data);
