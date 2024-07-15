@@ -46,37 +46,46 @@
 	<script>
 		document.addEventListener('DOMContentLoaded', function() {
 			fetch('https://cf-resume-site-share.s3.amazonaws.com/api_url.txt')
-        .then(response => response.text())
-        .then(apiUrl => {
-            apiUrl = apiUrl.trim(); 
-            console.log('API URL:', apiUrl);
-            return fetch(apiUrl, {
-                method: 'GET'
-            });
-        })
-		  .then(response => response.json())
-		  .then(data => {
-			console.log('API response:', data);
-			const hitCount = data.count;
-			const hitCounterElement = document.getElementById('hit-counter');
-			if (hitCounterElement) {
-			  if (!isNaN(hitCount)) {
-				hitCounterElement.textContent = `${hitCount}`;
-			  } else {
-				console.error('Unexpected response:', data);
-				hitCounterElement.textContent = 'Error: Invalid hit count';
-			  }
-			} else {
-			  console.error('Hit counter element not found');
-			}
-		  })
-		  .catch(error => {
-			console.error('Error:', error);
-			const hitCounterElement = document.getElementById('hit-counter');
-			if (hitCounterElement) {
-			  hitCounterElement.textContent = 'Error ${error.message}';
-			}
-		  });
+				.then(response => response.text())
+				.then(apiUrl => {
+					apiUrl = apiUrl.trim(); 
+					console.log('API URL:', apiUrl);
+					return fetch(apiUrl, {
+						method: 'GET',
+						mode: 'cors', // Explicitly set CORS mode
+						headers: {
+							'Content-Type': 'application/json'
+						}
+					});
+				})
+				.then(response => {
+					if (!response.ok) {
+						throw new Error(`HTTP error! status: ${response.status}`);
+					}
+					return response.json();
+				})
+				.then(data => {
+					console.log('API response:', data);
+					const hitCount = data.count;
+					const hitCounterElement = document.getElementById('hit-counter');
+					if (hitCounterElement) {
+						if (!isNaN(hitCount)) {
+							hitCounterElement.textContent = `${hitCount}`;
+						} else {
+							console.error('Unexpected response:', data);
+							hitCounterElement.textContent = 'Error: Invalid hit count';
+						}
+					} else {
+						console.error('Hit counter element not found');
+					}
+				})
+				.catch(error => {
+					console.error('Error:', error);
+					const hitCounterElement = document.getElementById('hit-counter');
+					if (hitCounterElement) {
+						hitCounterElement.textContent = `Error: ${error.message}`;
+					}
+				});
 		});
 	</script>
 
