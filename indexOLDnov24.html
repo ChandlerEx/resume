@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<!-- Many, many thanks to Naveen Raj for inspiring this layout, and to Claude.ai for help with text -->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Chandler Friedman - Resume</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style></style>
+</head>
+
+
+<body>
+
+    <!-- Nav bar -->
+    <header>
+        <nav class="navbar">
+            <a href="#" class="navbar-btn-1">Home</a>
+            <ul class="nav-menu">
+                <li class="navbar-btn-1">
+                    <a href="https://www.linkedin.com/in/chandlerfriedman/" target="_blank" class="nav-link">LinkedIn</a>
+                </li>
+                <li class="navbar-btn-1">
+                    <a href="#footer" class="nav-link">Contact</a>
+                </li>
+                <li class="navbar-btn-2">
+                    <a href="ChandlerFriedmanResumeWEBSITE.pdf" target="_blank" class="nav-link">Resume (pdf)</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+
+	<!-- Page Hit Counter function -->
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			fetch('https://cf-resume-site-share.s3.amazonaws.com/api_url.txt')
+				.then(response => response.text())
+				.then(apiUrl => {
+					apiUrl = apiUrl.trim(); 
+					console.log('API URL:', apiUrl);
+					return fetch(apiUrl, {
+						method: 'GET',
+						mode: 'cors', // Explicitly set CORS mode
+						headers: {
+							'Content-Type': 'application/json'
+						}
+					});
+				})
+				.then(response => {
+					if (!response.ok) {
+						throw new Error(`HTTP error! status: ${response.status}`);
+					}
+					return response.json();
+				})
+				.then(data => {
+					console.log('API response:', data);
+					const hitCount = data.count;
+					const hitCounterElement = document.getElementById('hit-counter');
+					if (hitCounterElement) {
+						if (!isNaN(hitCount)) {
+							hitCounterElement.textContent = `${hitCount}`;
+						} else {
+							console.error('Unexpected response:', data);
+							hitCounterElement.textContent = 'Error: Invalid hit count';
+						}
+					} else {
+						console.error('Hit counter element not found');
+					}
+				})
+				.catch(error => {
+					console.error('Error:', error);
+					const hitCounterElement = document.getElementById('hit-counter');
+					if (hitCounterElement) {
+						hitCounterElement.textContent = `Error: ${error.message}`;
+					}
+				});
+		});
+	</script>
+
+
+    <!-- Resume Content -->
+    <article class="wrapper">
+
+        <section class="section-profile">
+            <h1 class="section-profile-h1">Hi, <span class="section-profile-h1-sub-h1">I'm Chandler Friedman</span></h1>
+            <p class="viewers-count">and, as required for the <a href="https://cloudresumechallenge.dev/docs/the-challenge/aws/">Cloud Resume Challenge</a>, this page has been viewed <strong><span id="hit-counter"></span> times</strong></p>
+        </section>
+
+
+        <section class="section-profile section-container">
+            <h2>Professional Summary</h2>
+            <div class="section-content">
+                <p>
+                    Results-driven IT professional with AWS Solutions Architect Associate certification and extensive experience in cloud 
+					technologies and customer-focused IT support. Skilled in implementing and managing cloud-based solutions, troubleshooting 
+					complex technical issues, and ensuring data security and compliance.
+                </p>
+            </div>
+        </section>
+
+
+        <section class="section-skills section-container">
+            <h2>Skills</h2>
+            <div class="section-content">
+                <ul>
+                    <li>
+                        Platforms: <strong>AWS, UniFi, Azure</strong>
+                    </li>
+					<li>
+                        Operating Systems: <strong>Windows, MacOS, Linux (ubuntu, kali)</strong>
+                    </li>
+                    <li>
+                        Software: <strong>MS Suite, Google Workspace, Zoom, Teams, Slack, Syncro, Kandji, Jamf, Trello, Notion, IT Glue, 1Password</strong>
+                    </li>
+                    <li>
+                        Remote Desktop Tools: <strong>Splashtop, Screenconnect, TeamViewer, RealVNC, </strong>
+                    </li>
+					<li>
+                        Ticketing Tools: <Strong>Zendesk, Zoho, ServiceNow</Strong>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+
+		<section class="section-certification section-container">
+			<h2>Certifications</h2>
+			<div class="section-content">
+				<ul>
+					<li>
+						AWS Certified Solutions Architect – Associate <a
+							href="https://www.credly.com/badges/b84a33a6-e0a2-42ae-8771-9f1db462faf1/public_url"
+							target="_blank"><i class="fa-solid fa-up-right-from-square fa-xs"
+							style="color:#b3b3b3;"></i></a>
+					</li>
+					<li>
+						AWS Certified Cloud Practitioner <a
+							href="https://www.credly.com/badges/21720bb0-a5e7-4cc5-b682-e48101ded5bd/public_url"
+							target="_blank"><i class="fa-solid fa-up-right-from-square fa-xs"
+								style="color:#b3b3b3;"></i></a>
+					</li>
+					<li>
+						CompTIA A+, Net+, Sec+ (or CompTIA's 'stackable' CSIS certification) <a
+							href="https://www.credly.com/badges/e869710d-a30f-4c1c-a9eb-54d3aed3cc89/public_url" 
+							target="_blank"><i class="fa-solid fa-up-right-from-square fa-xs" style="color:#b3b3b3;"></i></a>
+					</li>
+					<li>
+						Prompt Engineering for ChatGPT <a
+							href="https://www.coursera.org/account/accomplishments/certificate/ZADWVXUNQLFR"
+							target="_blank"><i class="fa-solid fa-up-right-from-square fa-xs" style="color:#b3b3b3;"></i></a>
+					</li>
+				</ul>
+			</div>
+		</section>
+
+
+        <section class="section-experience section-container">
+            <h2>Experience</h2>
+            <div class="section-content">
+
+                <div class="section-exp">
+                    <h3>IT Consultant</h3>
+                    <a href="https://itjones.com" target="_blank">Jones IT, San Francisco, CA</a>
+                    <br> 2024
+                    <ul>
+						<li>Diagnosed and resolved complex technical issues across diverse platforms, including cloud services</li>
+						<li>Implemented and managed cloud-based solutions, gaining hands-on experience with AWS-like services</li>
+						<li>Collaborated with team members to improve efficiency in cloud projects</li>
+						<li>Explained technical concepts to non-technical stakeholders</li>
+                    </ul>
+                </div>
+
+                <div class="section-exp">
+                    <h3>IT Support Technician</h3>
+                    <a href="https://www.1above.tech/" target="_blank">1Above, Los Angeles, CA</a>
+                    <br> 2023 - 2024
+					<ul>
+						<li>Resolved thousands of help desk tickets, focusing on healthcare clients and ensuring data protection and regulatory compliance</li>
+						<li>Utilized cloud-based tools including Syncro, Zoho, and Hudu</li>
+						<li>Managed remote connections using ScreenConnect and Splashtop</li>
+						<li>Worked extensively with AzureAD/Entra for identity and access management</li>
+						<li>Administered cloud storage solutions like Box</li>
+						<li>Configured and managed UniFi networks</li>
+						<li>Received company-wide recognition for customer satisfaction and documentation quality</li>
+					</ul>
+                </div>
+
+                <div class="section-exp">
+                    <h3>Technical Founder</h3>
+                    <a href="https://www.fakenewssniper.com/" target="_blank">Fake News Sniper, Los Angeles, CA</a>
+                    <br> 2020 - 2023
+					<ul>
+						<li>Led cross-functional team in developing data analysis reports for Meta, focusing on disinformation network detection</li>
+						<li>Mastered and provided training on Meta's proprietary back-end software for third-party fact-checking partners, demonstrating quick adaptability to new technologies</li>
+						<li>Designed and executed a proof-of-concept product utilizing database technology to create advertiser-friendly blacklists of potentially problematic FB pages</li>
+						<li>Developed and continuously refined content flagging algorithms to adapt to frequent policy changes, showcasing ability to work with dynamic rulesets</li>
+						<li>Streamlined onboarding processes for new hires, creating comprehensive training materials on company tools and procedures</li>
+						<li>Collaborated with Meta's team to ensure compliance with platform policies while maintaining fact-checking integrity</li>
+					</ul>
+                </div>
+
+				<div class="section-exp">
+					<h3>Technical Founder</h3>
+					<a href="https://www.worldgonesilent.com/" target="_blank">World Gone Silent, Los Angeles, CA</a>
+					<br> 2015 - 2020
+					<ul>
+						<li>Conceived, built, and documented secure e-commerce site</li>
+						<li>Configured Amazon FBA account, registered product UPCs, and utilized platform for sales and order fulfillment</li>
+						<li>Handled all IT support issues, customer interactions, and technical troubleshooting</li>
+					</ul>
+				</div>
+
+				<div class="section-exp">
+					<h3>Assignment Manager / Assignment Editor</h3>
+					<a href="https://www.cnn.com/" target="_blank">CNN, </a><a href="https://www.winknews.com/" target="_blank">WINK-TV, </a><a href="https://www.12news.com/" target="_blank">KPNX-TV, </a><a href="https://www.fox35orlando.com/" target="_blank">WOFL-TV</a></h3>
+					<br>2001 - 2015</br>
+					<ul>
+						<li>Overhauled newsgathering resources and organization</li>
+						<li>Worked on CNN's first digital news desk for domestic newsgathering</li>
+						<li>Earned CEO award for intra-preneurial projects and a Peabody Award</li>
+					</ul>
+				</div>
+			</div>
+        </section>
+
+
+        <section class="section-project section-container">
+            <h2>Projects</h2>
+            <div class="section-content">
+                <ul>
+						<li>Built web-enabled, touch-activated light switch with 2 RPis</li>
+						<li>Completed the Cloud Resume Challenge, using Cloudfront, Route 53, DynamoDB, Lambda, API Gateway, S3</li> 
+						<li>Built own Linux PC from scratch, and yes, I can terminate an RJ-45 cable</li>
+						<li>Started and configured virtual machines on both VMWare and Oracle VM VirtualBox hypervisors</li>
+						<li>Implemented cross platform access to Linux, Mac, and PC via static IPs</li>
+						<li>Configured and implemented Pi-Hole as DNS server to block ads on home network</li>
+				</ul>
+            </div>
+        </section>
+
+        <section class="section-education section-container">
+            <h2>Education</h2>
+            <div class="section-content">
+                <h3>BA Psychology</h3>
+                <a href="https://www.emory.edu/home/explore/emory-profile/index.html" target="_blank">Emory University</a> (Atlanta, GA)
+            </div>
+        </section>
+    </article>
+
+
+    <!-- Footer -->
+    <footer class="footer" id="footer">
+        <div class="footer-container">
+            <h2>Contact</h2>
+            <ul>
+                <li>
+                    <a href="mailto:chandler12@gmail.com"><i class="fa-solid fa-envelope"></i>Mail</a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/in/chandlerfriedman/" target="_blank"><i
+                            class="fa-brands fa-linkedin"></i>LinkedIn</a>
+                </li>
+                <li>
+                    <a href="https://github.com/ChandlerEx" target="_blank"><i class="fa-brands fa-github"></i>GitHub</a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+
+</body>
+</html>
