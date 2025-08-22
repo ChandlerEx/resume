@@ -11,20 +11,25 @@
     <style>
         .section-project h3 a {
             color: #2e4ac6;
-            /* highlight color for clickable project titles */
             text-decoration: underline;
         }
 
         .section-project h3 a:hover {
             color: #c16767;
-            /* hover color */
         }
 
         .banner {
-            max-width: 35%;
+            max-width: 100%;
             height: auto;
             display: block;
             margin: 0 auto 2rem auto;
+        }
+
+        @media (min-width: 769px) {
+            .banner {
+                max-width: 60%;
+                /* shrink on desktop/tablet, keep full width on mobile */
+            }
         }
     </style>
 </head>
@@ -68,14 +73,10 @@
             <div class="section-content">
                 <p>
                     Hands-on prototype &amp; manufacturing tech pivoting from IT into full-time electro‑mechanical build
-                    work. Five years running
-                    World Gone Silent, where I designed, soldered, wired, programmed, documented, and shipped hardware
-                    kits—plus sourced
-                    components internationally. Recent portfolio builds include a touchscreen scoreboard, a
-                    soil‑moisture monitor, and a
-                    stock/notification orb, showcasing FFF 3D printing, electronics assembly, Fusion 360, DMM‑based
-                    test/debug, and clear
-                    build documentation.
+                    work. Founder of World Gone Silent, where I designed, soldered, wired, and shipped hardware kits
+                    while sourcing components internationally. Recent portfolio builds—a scoreboard, soil‑moisture
+                    monitor, and stock/notification orb—showcase 3D printing, electronics assembly, CAD (Fusion 360),
+                    and clear build documentation.
                 </p>
             </div>
         </section>
@@ -123,8 +124,8 @@
             <h2>Experience</h2>
             <div class="section-content">
                 <div class="section-exp">
-                    <h3>Unison — Head of IT</h3>
-                    <a href="https://unison.co" target="_blank">Mountain View, CA</a>
+                    <h3><a href="https://unison.co" target="_blank">Unison — Head of IT</a></h3>
+                    Mountain View, CA
                     <br /> 2024 – 2025
                     <ul>
                         <li>Implemented company‑wide IT infrastructure (routers, servers, structured cabling).</li>
@@ -148,8 +149,8 @@
                 </div>
 
                 <div class="section-exp">
-                    <h3>Fake News Sniper — Founder</h3>
-                    <a href="https://www.fakenewssniper.com/" target="_blank">Los Angeles, CA</a>
+                    <h3><a href="https://www.fakenewssniper.com/" target="_blank">Fake News Sniper — Founder</a></h3>
+                    Los Angeles, CA</a>
                     <br /> 2020 – 2023
                     <ul>
                         <li>Managed project team delivering reports for Meta fact‑checking program; led trainings for
@@ -159,8 +160,8 @@
                 </div>
 
                 <div class="section-exp">
-                    <h3>World Gone Silent — Founder</h3>
-                    <a href="https://www.worldgonesilent.com/" target="_blank">Los Angeles, CA</a>
+                    <h3><a href="https://www.worldgonesilent.com/" target="_blank">World Gone Silent — Founder</a></h3>
+                    Los Angeles, CA
                     <br /> 2015 – 2020
                     <ul>
                         <li>Founded &amp; operated consumer ham radio products company focused on off‑grid kits.</li>
