@@ -1,23 +1,16 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 
-<!-- Many, many thanks to Naveen Raj for inspiring this layout, and to Claude.ai for help with text -->
-
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-
-    <title>Chandler Friedman - Resume</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style></style>
+    <meta charset="UTF-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chandler Friedman – Resume</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <link rel="stylesheet" href="style.css" />
 </head>
 
-
 <body>
-
     <!-- Nav bar -->
     <header>
         <nav class="navbar">
@@ -31,10 +24,11 @@
                     <a href="#footer" class="nav-link">Contact</a>
                 </li>
                 <li class="navbar-btn-2">
-                    <a href="ChandlerFriedmanResumeWEBSITE.pdf" target="_blank" class="nav-link">Resume (pdf)</a>
+                    <!-- Update file name here if your S3 object is different -->
+                    <a href="ChandlerFriedmanResumeWEBSITE.pdf" target="_blank" class="nav-link">Resume (PDF)</a>
                 </li>
             </ul>
-            <div class="hamburger">
+            <div class="hamburger" aria-label="Menu" aria-expanded="false" role="button" tabindex="0">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -42,232 +36,138 @@
         </nav>
     </header>
 
-
-    <!-- Page Hit Counter function -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            fetch('https://cf-resume-site-share.s3.amazonaws.com/api_url.txt')
-                .then(response => response.text())
-                .then(apiUrl => {
-                    apiUrl = apiUrl.trim();
-                    console.log('API URL:', apiUrl);
-                    return fetch(apiUrl, {
-                        method: 'GET',
-                        mode: 'cors', // Explicitly set CORS mode
-                        headers: {
-                            'Content-Type': 'application/json'
-                        }
-                    });
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    console.log('API response:', data);
-                    const hitCount = data.count;
-                    const hitCounterElement = document.getElementById('hit-counter');
-                    if (hitCounterElement) {
-                        if (!isNaN(hitCount)) {
-                            hitCounterElement.textContent = `${hitCount}`;
-                        } else {
-                            console.error('Unexpected response:', data);
-                            hitCounterElement.textContent = 'Error: Invalid hit count';
-                        }
-                    } else {
-                        console.error('Hit counter element not found');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    const hitCounterElement = document.getElementById('hit-counter');
-                    if (hitCounterElement) {
-                        hitCounterElement.textContent = `Error: ${error.message}`;
-                    }
-                });
-        });
-    </script>
-
-
     <!-- Resume Content -->
     <article class="wrapper">
-
         <section class="section-profile">
             <h1 class="section-profile-h1">Hi, <span class="section-profile-h1-sub-h1">I'm Chandler Friedman</span></h1>
-            <p class="viewers-count">and, as required for the <a
-                    href="https://cloudresumechallenge.dev/docs/the-challenge/aws/">Cloud Resume Challenge</a>, this
-                page has been viewed <strong><span id="hit-counter"></span> times</strong></p>
+            <!-- Removed Cloud Resume Challenge view counter on request -->
         </section>
-
 
         <section class="section-profile section-container">
             <h2>Professional Summary</h2>
             <div class="section-content">
                 <p>
-                    Results-driven IT infrastructure leader focused on cloud solutions and scalable systems. AWS
-                    Solutions Architect
-                    with proven experience building complete technical foundations for growing organizations.
+                    Hands-on prototype &amp; manufacturing tech pivoting from IT into full-time electro‑mechanical build
+                    work. Five years running
+                    World Gone Silent, where I designed, soldered, wired, programmed, documented, and shipped hardware
+                    kits—plus sourced
+                    components internationally. Recent portfolio builds include a touchscreen scoreboard, a
+                    soil‑moisture monitor, and a
+                    stock/notification orb, showcasing FFF 3D printing, electronics assembly, Fusion 360, DMM‑based
+                    test/debug, and clear
+                    build documentation.
                 </p>
             </div>
         </section>
 
-
         <section class="section-skills section-container">
-            <h2>Skills</h2>
+            <h2>Core Skills</h2>
             <div class="section-content">
                 <ul>
-                    <li>
-                        Platforms: <strong>AWS, UniFi, Azure, Unison</strong>
-                    </li>
-                    <li>
-                        Operating Systems: <strong>Windows, MacOS, Linux (ubuntu, kali)</strong>
-                    </li>
-                    <li>
-                        Software: <strong>MS Suite, Google Workspace, Zoom, Teams, Slack, Syncro, Jamf, Trello, Notion,
-                            IT Glue, 1Password, KnowBe4</strong>
-                    </li>
-                    <li>
-                        Remote Desktop Tools: <strong>Splashtop, Screenconnect, TeamViewer, RealVNC</strong>
-                    </li>
-                    <li>
-                        Ticketing Tools: <Strong>Zendesk, Zoho, ServiceNow</Strong>
-                    </li>
+                    <li>Electro‑mechanical assembly; soldering &amp; wiring; PCB rework</li>
+                    <li>Test/debug with DMM; basic embedded programming (ESP32/Arduino)</li>
+                    <li>3D printing (FFF: PLA, PETG); CAD (Fusion 360); enclosure design</li>
+                    <li>Technical documentation; BOM creation; part sourcing &amp; vendor management</li>
+                    <li>Rapid prototyping; lab/shop organization</li>
                 </ul>
             </div>
         </section>
-
-
-        <section class="section-certification section-container">
-            <h2>Certifications</h2>
-            <div class="section-content">
-                <ul>
-                    <li>
-                        AWS Certified Solutions Architect – Associate <a
-                            href="https://www.credly.com/badges/b84a33a6-e0a2-42ae-8771-9f1db462faf1/public_url"
-                            target="_blank"><i class="fa-solid fa-up-right-from-square fa-xs"
-                                style="color:#b3b3b3;"></i></a>
-                    </li>
-                    <li>
-                        CompTIA A+, Net+, Sec+ (or CompTIA's 'stackable' CSIS certification) <a
-                            href="https://www.credly.com/badges/e869710d-a30f-4c1c-a9eb-54d3aed3cc89/public_url"
-                            target="_blank"><i class="fa-solid fa-up-right-from-square fa-xs"
-                                style="color:#b3b3b3;"></i></a>
-                    </li>
-                    <li>
-                        Prompt Engineering for ChatGPT <a
-                            href="https://www.coursera.org/account/accomplishments/certificate/ZADWVXUNQLFR"
-                            target="_blank"><i class="fa-solid fa-up-right-from-square fa-xs"
-                                style="color:#b3b3b3;"></i></a>
-                    </li>
-                </ul>
-            </div>
-        </section>
-
-
-        <section class="section-experience section-container">
-            <h2>Experience</h2>
-            <div class="section-content">
-
-                <div class="section-exp">
-                    <h3>IT Consultant</h3>
-                    <a href="https://unison.co" target="_blank">Unison (a Y Combinator VR Startup), Mountain View,
-                        CA</a>
-                    <br> 2024
-                    <ul>
-                        <li>Built and implemented complete IT infrastructure for a growing startup</li>
-                        <li>Designed and constructed two new conference rooms with full A/V capabilities</li>
-                        <li>Implemented enterprise-wide security measures including 1Password and KnowBe4 training</li>
-                        <li>Managed all aspects of IT operations and infrastructure planning</li>
-                    </ul>
-                </div>
-
-                <div class="section-exp">
-                    <h3>IT Consultant</h3>
-                    <a href="https://itjones.com" target="_blank">Jones IT, San Francisco, CA</a>
-                    <br> 2024
-                    <ul>
-                        <li>Diagnosed and resolved complex technical issues across diverse platforms, including cloud
-                            services</li>
-                        <li>Implemented and managed cloud-based solutions, gaining hands-on experience with AWS-like
-                            services</li>
-                        <li>Collaborated with team members to improve efficiency in cloud projects</li>
-                        <li>Explained technical concepts to non-technical stakeholders</li>
-                    </ul>
-                </div>
-
-                <div class="section-exp">
-                    <h3>IT Support Technician</h3>
-                    <a href="https://www.1above.tech/" target="_blank">1Above, Los Angeles, CA</a>
-                    <br> 2023 - 2024
-                    <ul>
-                        <li>Resolved thousands of help desk tickets, focusing on healthcare clients and ensuring data
-                            protection and regulatory compliance</li>
-                        <li>Utilized cloud-based tools including Syncro, Zoho, and Hudu</li>
-                        <li>Managed remote connections using ScreenConnect and Splashtop</li>
-                        <li>Worked extensively with AzureAD/Entra for identity and access management</li>
-                        <li>Administered cloud storage solutions like Box</li>
-                        <li>Configured and managed UniFi networks</li>
-                        <li>Received company-wide recognition for customer satisfaction and documentation quality</li>
-                    </ul>
-                </div>
-
-                <div class="section-exp">
-                    <h3>Technical Founder</h3>
-                    <a href="https://www.fakenewssniper.com/" target="_blank">Fake News Sniper, Los Angeles, CA</a>
-                    <br> 2020 - 2023
-                    <ul>
-                        <li>Led cross-functional team in developing data analysis reports for Meta, focusing on
-                            disinformation network detection</li>
-                        <li>Mastered and provided training on Meta's proprietary back-end software for third-party
-                            fact-checking partners</li>
-                        <li>Designed and executed a proof-of-concept product utilizing database technology</li>
-                        <li>Developed and continuously refined content flagging algorithms</li>
-                        <li>Streamlined onboarding processes for new hires</li>
-                        <li>Collaborated with Meta's team to ensure compliance with platform policies</li>
-                    </ul>
-                </div>
-
-                <div class="section-exp">
-                    <h3>Technical Founder</h3>
-                    <a href="https://www.worldgonesilent.com/" target="_blank">World Gone Silent, Los Angeles, CA</a>
-                    <br> 2015 - 2020
-                    <ul>
-                        <li>Conceived, built, and documented secure e-commerce site</li>
-                        <li>Configured Amazon FBA account, registered product UPCs, and utilized platform for sales and
-                            order fulfillment</li>
-                        <li>Handled all IT support issues, customer interactions, and technical troubleshooting</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
 
         <section class="section-project section-container">
             <h2>Projects</h2>
             <div class="section-content">
-                <ul>
-                    <li>Configured PoE+ hat for Pi Zero 2, and two other Pi Zero boards, to build tiny homelab network
-                    </li>
-                    <li>Built web-enabled, touch-activated light switch with 2 RPis</li>
-                    <li>Completed the Cloud Resume Challenge, using Cloudfront, Route 53, DynamoDB, Lambda, API Gateway,
-                        S3</li>
-                    <li>Built own Linux PC from scratch, and yes, I can terminate an RJ-45 cable</li>
-                </ul>
+                <div class="section-exp">
+                    <h3>Scoreboard (ESP32 + Display) · 2025</h3>
+                    <p>Designed &amp; assembled 3D‑printed enclosure; integrated display + electronics.
+                        Developed/debugged embedded firmware with user‑facing UI. Documented build process; released
+                        open‑source repo.</p>
+                </div>
+                <div class="section-exp">
+                    <h3>Soil Moisture Monitor · 2025</h3>
+                    <p>Integrated capacitive sensor with ESP32‑S3; programmed firmware for OLED display + Wi‑Fi portal.
+                        Designed/printed custom enclosure in Fusion 360; iterated for fit/durability. Created build
+                        documentation &amp; wiring diagrams.</p>
+                </div>
+                <div class="section-exp">
+                    <h3>Stock/Notification Orb · 2025</h3>
+                    <p>Designed LED‑based info display using WS2812B rings + ESP32. Prototyped multiple enclosures with
+                        PLA/PETG; refined CAD models. Authored assembly documentation &amp; GitHub repo.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-experience section-container">
+            <h2>Experience</h2>
+            <div class="section-content">
+                <div class="section-exp">
+                    <h3>Unison — Head of IT</h3>
+                    <a href="https://unison.co" target="_blank">Mountain View, CA</a>
+                    <br /> 2024 – 2025
+                    <ul>
+                        <li>Implemented company‑wide IT infrastructure (routers, servers, structured cabling).</li>
+                        <li>Built/maintained HPC build server for engineering team.</li>
+                        <li>Led vendor selection &amp; deployment of Siemens NX + Teamcenter CAD.</li>
+                        <li>Designed &amp; deployed secure A/V + collaboration setups; created onboarding &amp;
+                            cybersecurity training.</li>
+                    </ul>
+                </div>
+
+                <div class="section-exp">
+                    <h3>IT Consulting &amp; Support — Various</h3>
+                    <span>Jones IT; LA Computer World</span>
+                    <br /> 2023 – 2024
+                    <ul>
+                        <li>Provided IT services to startups, SMBs, and healthcare organizations across hardware,
+                            software, and networks.</li>
+                        <li>Created clear documentation of solutions and processes; coordinated with vendors and
+                            suppliers.</li>
+                    </ul>
+                </div>
+
+                <div class="section-exp">
+                    <h3>Fake News Sniper — Founder</h3>
+                    <a href="https://www.fakenewssniper.com/" target="_blank">Los Angeles, CA</a>
+                    <br /> 2020 – 2023
+                    <ul>
+                        <li>Managed project team delivering reports for Meta fact‑checking program; led trainings for
+                            clients.</li>
+                        <li>Gained experience in database tools, content review, and workflow optimization.</li>
+                    </ul>
+                </div>
+
+                <div class="section-exp">
+                    <h3>World Gone Silent — Founder</h3>
+                    <a href="https://www.worldgonesilent.com/" target="_blank">Los Angeles, CA</a>
+                    <br /> 2015 – 2020
+                    <ul>
+                        <li>Founded &amp; operated consumer ham radio products company focused on off‑grid kits.</li>
+                        <li>Managed lifecycle from concept through sales, fulfillment, and support; soldered custom
+                            power packs; integrated components.</li>
+                        <li>Tested/validated radios, cables, antennas; sourced components domestically &amp;
+                            internationally.</li>
+                    </ul>
+                </div>
+
+                <div class="section-exp">
+                    <h3>Journalism — Assignment Editor/Manager</h3>
+                    <span>CNN; WINK‑TV; KPNX‑TV; WOFL‑TV</span>
+                    <br /> 2001 – 2015
+                    <ul>
+                        <li>Led newsroom process improvements, training, and manuals; earned a Peabody Award.</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
         <section class="section-education section-container">
             <h2>Education</h2>
             <div class="section-content">
-                <h3>BA Psychology</h3>
+                <h3>B.A. Psychology</h3>
                 <a href="https://www.emory.edu/home/explore/emory-profile/index.html" target="_blank">Emory
-                    University</a> (Atlanta, GA)
+                    University</a> — Atlanta, GA
             </div>
         </section>
     </article>
-
 
     <!-- Footer -->
     <footer class="footer" id="footer">
@@ -282,13 +182,24 @@
                             class="fa-brands fa-linkedin"></i>LinkedIn</a>
                 </li>
                 <li>
-                    <a href="https://github.com/ChandlerEx/Projects/tree/main" target="_blank"><i
+                    <a href="https://github.com/ChandlerEx/Projects" target="_blank"><i
                             class="fa-brands fa-github"></i>GitHub</a>
                 </li>
             </ul>
         </div>
     </footer>
 
+    <!-- Tiny script to toggle mobile menu; keeps existing styling -->
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        function toggleMenu() {
+            const active = navMenu.classList.toggle('active');
+            hamburger?.setAttribute('aria-expanded', active ? 'true' : 'false');
+        }
+        hamburger?.addEventListener('click', toggleMenu);
+        hamburger?.addEventListener('keypress', (e) => { if (e.key === 'Enter') toggleMenu(); });
+    </script>
 </body>
 
 </html>
